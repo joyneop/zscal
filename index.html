@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Calendar</title>
+        <style>
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 14px;
+        }
+        body {
+            font-family: -apple-system, 'SF UI Text', 'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang SC', 'Source Han Sans SC';
+            font-weight: 300;
+            color: #000;
+            background: #EEE;
+        }
+        .cont {
+            position: fixed;
+            top: 50%;
+            width: 100vw;
+            -webkit-transform: translateY(-50%);
+        }
+        .table {
+            width: 1330px;
+            margin: 0 auto;
+        }
+        .row-heading {
+            font-size: 16px;
+            padding: 20px 0;
+        }
+        .day {
+            text-align: center;
+            width: 190px;
+            float: left;
+        }
+        .row-regular {}
+        .cell {
+            background: #FFF;
+            width: 180px;
+            height: 180px;
+            padding: 10px;
+            margin: 5px;
+            float: left;
+        }
+        .cell[data-today="true"] {
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.26) 0 4px 40px 8px;
+            z-index: 1000;
+        }
+        .clear {
+            clear: both;
+        }
+        p {
+            font-size: 13px;
+            line-height: 20x;
+            padding: 0 0 8px;
+            margin: 0;
+        }
+        /*-----------------------------------------*/
+        .black {
+            color: #000;
+        }
+        .azure {
+            color: #19A6FD;
+        }
+        .ruby {
+            color: #FE4242;
+        }
+        .gray {
+            color: #999;
+        }
+        .cell p .gray {
+            margin-right: 3px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="cont">
+            <div class="table">
+                <div class="row-heading">
+                    <div class="day ruby">Sunday</div>
+                    <div class="day">Monday</div>
+                    <div class="day">Tuesday</div>
+                    <div class="day">Wednesday</div>
+                    <div class="day">Thursday</div>
+                    <div class="day">Friday</div>
+                    <div class="day ruby">Saturday</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="row-regular">
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                        <p class="azure">🔵 产品周期开始</p>
+                        <p class="azure"><span class="gray">PAP</span> 需求及方案讨论会</p>
+                        <p class="azure"><span class="gray">PAP</span> 最后定稿交付开发</p>
+                        <p class="azure"><span class="gray">PT/RD</span> 对需求细节的答疑解惑</p>
+                    </div>
+                    <div class="cell">
+                        <p class="azure"><span class="gray">PT/RD</span> 对需求细节的答疑解惑</p>
+                    </div>
+                    <div class="cell">
+                        <p class="black">⚫️ 研发周期开始</p>
+                    </div>
+                    <div class="cell">
+                        <p class="azure"><span class="gray">All</span> 部门间沟通收集需求</p>
+                    </div>
+                    <div class="cell">
+                        <p class="azure"><span class="gray">All</span> 部门间沟通收集需求</p>
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="row-regular">
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                        <p class="azure"><span class="gray">PAP</span> 需求及方案讨论会</p>
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="row-regular">
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                        <p class="azure"><span class="gray">PAP</span> 需求及方案讨论会</p>
+                        <p class="azure"><span class="gray">UI</span> 正式开始制作上上周三至今的需求的视觉稿</p>
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                        <p class="black">研发周期结束</p>
+                        <p class="black">测试验收开始</p>
+                    </div>
+                    <div class="cell">
+                        <p class="azure"><span class="gray">PT/RD</span> 共同过一遍需求 (无需 UI 最终定稿)</p>
+                    </div>
+                    <div class="cell">
+                        <p class="azure"><span class="gray">UI</span> 视觉稿完成</p>
+                        <p class="black">测试验收结束</p>
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <script>
+        // Mark Today
+        (function () {
+            var theOriginalSunday = new Date('Sun Jun 25 2017 00:00:00 GMT+0800').getTime();
+            var today = (new Date()).getTime();
+            var delta = Math.floor((today-theOriginalSunday)%(60*60*24*1000*21)/(60*60*24*1000));
+            document.querySelectorAll('.cell')[delta].setAttribute('data-today', 'true');
+        })();
+        </script>
+    </body>
+</html>
