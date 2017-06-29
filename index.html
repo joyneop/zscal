@@ -9,13 +9,15 @@
         }
         html {
             font-size: 14px;
+            height: 100%;
         }
         body {
             font-family: -apple-system, 'SF UI Text', 'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang SC', 'Source Han Sans SC';
             font-weight: 400;
             color: #000;
-            background: #EEE linear-gradient(#273877, #215F8F, #4287A1, #9DB1B6) fixed no-repeat center;
+            background: #EEE linear-gradient(#273877 15%, #215F8F, #4287A1, #9DB1B6) fixed no-repeat center;
             background-size: cover;
+            height: 100%;
         }
         .cont {
             position: fixed;
@@ -56,7 +58,7 @@
         .cell[data-today="true"],
         .cell:not(:nth-child(1)):not(:nth-child(7)):hover {
             background: rgba(255, 255, 255, 0.91);
-            box-shadow: rgba(0, 0, 0, 0.25) 0 3px 40px 1px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0 3px 40px 1px;
             position: relative;
         }
         .cell[data-today="true"] {
@@ -67,7 +69,7 @@
             transition: all ease 10ms;
         }
         .cell[data-today="true"]:not(:nth-child(1)):not(:nth-child(7)):hover {
-            box-shadow: rgba(0, 0, 0, 0.42) 0 3px 55px 1px;
+            box-shadow: rgba(0, 0, 0, 0.62) 0 3px 55px 1px;
             z-index: 2000;
         }
         .clear {
@@ -84,7 +86,7 @@
             color: #000;
         }
         .azure {
-            color: #19A6FD;
+            color: #0050BF;
         }
         .ruby {
             color: #FE4242;
