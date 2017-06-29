@@ -14,7 +14,8 @@
             font-family: -apple-system, 'SF UI Text', 'Helvetica Neue', 'Helvetica', 'Arial', 'PingFang SC', 'Source Han Sans SC';
             font-weight: 400;
             color: #000;
-            background: #EEE;
+            background: #EEE linear-gradient(#273877, #215F8F, #4287A1, #9DB1B6) fixed no-repeat center;
+            background-size: cover;
         }
         .cont {
             position: fixed;
@@ -31,23 +32,43 @@
             padding: 20px 0;
         }
         .day {
+            color: #FFF;
             width: 190px;
             padding: 0 0 0 5px;
             float: left;
         }
         .row-regular {}
         .cell {
-            background: #FFF;
+            background: rgba(255, 255, 255, 0.86);
             width: 180px;
             height: 180px;
             padding: 10px;
             margin: 5px;
             float: left;
+            transition: all ease 1600ms;
+        }
+        .day:nth-child(1),
+        .day:nth-child(7),
+        .cell:nth-child(1),
+        .cell:nth-child(7) {
+            opacity: 0.3;
+        }
+        .cell[data-today="true"],
+        .cell:not(:nth-child(1)):not(:nth-child(7)):hover {
+            background: rgba(255, 255, 255, 0.91);
+            box-shadow: rgba(0, 0, 0, 0.25) 0 3px 40px 1px;
+            position: relative;
         }
         .cell[data-today="true"] {
-            position: relative;
-            box-shadow: rgba(0, 0, 0, 0.26) 0 4px 40px 8px;
             z-index: 1000;
+        }
+        .cell:not(:nth-child(1)):not(:nth-child(7)):hover {
+            z-index: 500;
+            transition: all ease 10ms;
+        }
+        .cell[data-today="true"]:not(:nth-child(1)):not(:nth-child(7)):hover {
+            box-shadow: rgba(0, 0, 0, 0.42) 0 3px 55px 1px;
+            z-index: 2000;
         }
         .clear {
             clear: both;
@@ -80,13 +101,13 @@
         <div class="cont">
             <div class="table">
                 <div class="row-heading">
-                    <div class="day ruby">Sunday</div>
+                    <div class="day">Sunday</div>
                     <div class="day">Monday</div>
                     <div class="day">Tuesday</div>
                     <div class="day">Wednesday</div>
                     <div class="day">Thursday</div>
                     <div class="day">Friday</div>
-                    <div class="day ruby">Saturday</div>
+                    <div class="day">Saturday</div>
                     <div class="clear"></div>
                 </div>
                 <div class="row-regular">
