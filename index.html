@@ -18,6 +18,7 @@
             background: #EEE linear-gradient(#273877 15%, #215F8F, #4287A1, #9DB1B6) fixed no-repeat center;
             background-size: cover;
             height: 100%;
+            overflow: hidden;
         }
         .cont {
             position: fixed;
@@ -42,24 +43,24 @@
         .row-regular {}
         .cell {
             background: rgba(255, 255, 255, 0.86);
+            position: relative;
             width: 180px;
             height: 180px;
-            padding: 10px;
+            /*padding: 10px;*/
+            padding: 25px 0px 0px;
             margin: 5px;
             float: left;
             transition: all ease 1600ms;
+            z-index: 1;
         }
-        .day:nth-child(1),
-        .day:nth-child(7),
-        .cell:nth-child(1),
-        .cell:nth-child(7) {
-            opacity: 0.3;
+        .row > :nth-child(1),
+        .row > :nth-child(7) {
+            opacity: 0.5;
         }
         .cell[data-today="true"],
         .cell:not(:nth-child(1)):not(:nth-child(7)):hover {
             background: rgba(255, 255, 255, 0.91);
             box-shadow: rgba(0, 0, 0, 0.35) 0 3px 40px 1px;
-            position: relative;
         }
         .cell[data-today="true"] {
             z-index: 1000;
@@ -81,18 +82,71 @@
             padding: 0 0 8px;
             margin: 0;
         }
+        p {
+            font-size: 13px;
+            line-height: 20x;
+            padding: 3px 6px;
+            margin: 3px 0;
+        }
+        .cell .cell-date {
+            font-size: 12px;
+            font-weight: 200;
+            color: #999;
+            color: #000;
+            position: absolute;
+            top: 6px;
+            right: 6px;
+        }
+        .cell[data-today="true"] .cell-date {
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            color: #FFF;
+            background: #FE4242;
+            box-shadow: rgba(0, 0, 0, 0.22) 0 0 8px 2px;
+            border-radius: 36px;
+            top: -18px;
+            right: -18px;
+            width: 36px;
+            height: 36px;
+            padding-top: 8px;
+        }
         /*-----------------------------------------*/
+        .bg-black {
+            /*color: #000;*/
+            color: #FFF;
+            background-color: #000;
+        }
+        .bg-azure {
+            /*color: #0050BF;*/
+            color: #FFF;
+            background-color: #1486CC;
+        }
+        .bg-emerald {
+            /*color: #36B33C;*/
+            color: #FFF;
+            background-color: #36B33C;
+        }
+        .bg-ruby {
+            /*color: #FE4242;*/
+            color: #FFF;
+            background-color: #FE4242;
+        }
         .black {
             color: #000;
         }
         .azure {
             color: #0050BF;
         }
+        .emerald {
+            color: #12B31A;
+        }
         .ruby {
             color: #FE4242;
         }
         .gray {
             color: #999;
+            display: none;
         }
         .cell p .gray {
             margin-right: 3px;
@@ -105,7 +159,7 @@
     <body>
         <div class="cont">
             <div class="table">
-                <div class="row-heading">
+                <div class="row row-heading">
                     <div class="day">Sunday</div>
                     <div class="day">Monday</div>
                     <div class="day">Tuesday</div>
@@ -115,72 +169,73 @@
                     <div class="day">Saturday</div>
                     <div class="clear"></div>
                 </div>
-                <div class="row-regular">
+                <div class="row row-regular">
                     <div class="cell">
                     </div>
                     <div class="cell">
-                        <p class="azure bold">🔵 产品周期开始</p>
-                        <p class="azure"><span class="gray" title="Product Affairs Participants">PAP</span> 需求及方案讨论会</p>
-                        <p class="azure"><span class="gray" title="Product Affairs Participants">PAP</span> 最后定稿交付开发</p>
-                        <p class="azure"><span class="gray" title="Product Team / R&amp;D">PT/RD</span> 对需求细节的答疑解惑</p>
+                        <!-- <p class="bold">🌎 产品周期开始</p> -->
+                        <p class="azure bold">产品周期开始</p>
+                        <p class="bg-azure"><span class="gray" title="Product Affairs Participants">PAP</span> 需求及方案讨论会</p>
+                        <p class="bg-azure"><span class="gray" title="Product Affairs Participants">PAP</span> 最后定稿交付开发</p>
+                        <p class="bg-azure"><span class="gray" title="Product Team / R&amp;D">PT/RD</span> 对需求细节的答疑解惑</p>
                     </div>
                     <div class="cell">
-                        <p class="azure"><span class="gray" title="Product Team / R&amp;D">PT/RD</span> 对需求细节的答疑解惑</p>
-                        <p class="black"><span class="gray">RD</span> Sprint Backlog 排期细化</p>
+                        <p class="bg-azure"><span class="gray" title="Product Team / R&amp;D">PT/RD</span> 对需求细节的答疑解惑</p>
+                        <p class="bg-black"><span class="gray">RD</span> Sprint Backlog 排期细化</p>
                     </div>
                     <div class="cell">
-                        <p class="black bold">⚫️ 研发周期开始</p>
-                        <p class="black">上周期版本上线</p>
+                        <p class="bold">研发周期开始</p>
+                        <p class="bg-black">上周期版本上线</p>
                     </div>
                     <div class="cell">
-                        <p class="azure"><span class="gray">All</span> 部门间沟通收集需求</p>
+                        <p class="bg-azure"><span class="gray">All</span> 部门间沟通收集需求</p>
                     </div>
                     <div class="cell">
-                        <p class="azure"><span class="gray">All</span> 部门间沟通收集需求</p>
-                    </div>
-                    <div class="cell">
-                    </div>
-                    <div class="clear"></div>
-                </div>
-
-                <div class="row-regular">
-                    <div class="cell">
-                    </div>
-                    <div class="cell">
-                        <p class="azure"><span class="gray" title="Product Affairs Participants">PAP</span> 需求及方案讨论会</p>
-                    </div>
-                    <div class="cell">
-                    </div>
-                    <div class="cell">
-                    </div>
-                    <div class="cell">
-                    </div>
-                    <div class="cell">
+                        <p class="bg-azure"><span class="gray">All</span> 部门间沟通收集需求</p>
                     </div>
                     <div class="cell">
                     </div>
                     <div class="clear"></div>
                 </div>
 
-                <div class="row-regular">
+                <div class="row row-regular">
                     <div class="cell">
                     </div>
                     <div class="cell">
-                        <p class="azure"><span class="gray" title="Product Affairs Participants">PAP</span> 需求及方案讨论会</p>
-                        <p class="azure"><span class="gray">UI</span> 正式开始制作上上周三至今的需求的视觉稿</p>
+                        <p class="bg-azure"><span class="gray" title="Product Affairs Participants">PAP</span> 需求及方案讨论会</p>
                     </div>
                     <div class="cell">
                     </div>
                     <div class="cell">
-                        <p class="black">研发周期结束</p>
-                        <p class="black">测试验收开始</p>
                     </div>
                     <div class="cell">
-                        <p class="azure"><span class="gray" title="Product Team / R&amp;D">PT/RD</span> 共同过一遍需求 (无需 UI 最终定稿)</p>
                     </div>
                     <div class="cell">
-                        <p class="azure"><span class="gray">UI</span> 视觉稿完成</p>
-                        <p class="black">测试验收结束</p>
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="row row-regular">
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                        <p class="bg-azure"><span class="gray" title="Product Affairs Participants">PAP</span> 需求及方案讨论会</p>
+                        <p class="bg-azure"><span class="gray">UI</span> 正式开始制作上上周三至今的需求的视觉稿</p>
+                    </div>
+                    <div class="cell">
+                    </div>
+                    <div class="cell">
+                        <p class="bold">研发周期结束</p>
+                        <p class="emerald bold">测试验收开始</p>
+                    </div>
+                    <div class="cell">
+                        <p class="bg-azure"><span class="gray" title="Product Team / R&amp;D">PT/RD</span> 共同过一遍需求 (无需 UI 最终定稿)</p>
+                    </div>
+                    <div class="cell">
+                        <p class="emerald bold">测试验收结束</p>
+                        <p class="bg-azure"><span class="gray">UI</span> 视觉稿完成</p>
                     </div>
                     <div class="cell">
                     </div>
@@ -189,12 +244,31 @@
             </div>
         </div>
         <script>
+        var MillisecondsPerDay = 60*60*24*1000;
+
         // Mark Today
         (function () {
-            var theOriginalSunday = new Date('Sun Jun 25 2017 00:00:00 GMT+0800').getTime();
-            var today = (new Date()).getTime();
-            var delta = Math.floor((today-theOriginalSunday)%(60*60*24*1000*21)/(60*60*24*1000));
+            var theOriginalSunday = new Date('Sun Jun 25 2017 00:00:00 GMT+0800').getTime() - MillisecondsPerDay*7*(0%3);
+            var today = Date.now();
+            window.delta = Math.floor((today-theOriginalSunday)%(MillisecondsPerDay*21)/(MillisecondsPerDay));
             document.querySelectorAll('.cell')[delta].setAttribute('data-today', 'true');
+        })();
+
+        // Add Dates
+        (function () {
+            window.dateOfTheFirstSunday = Date.now() - delta * MillisecondsPerDay;
+
+            ((new Array(21)).fill(1)).map(function (v, i) {
+                return dateOfTheFirstSunday + i * MillisecondsPerDay;
+            }).map(function (v, i) {
+                var d = new Date(); d.setTime(v);
+                return (((d.getDate() === 1 || i === 0) && i !== delta) ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getMonth()] : '') + ' ' + d.getDate();
+            }).map(function (dateString, i) {
+                var footer = document.createElement('div');
+                footer.classList.add('cell-date');
+                footer.appendChild(document.createTextNode(dateString));
+                document.querySelectorAll('.cell')[i].appendChild(footer);
+            });
         })();
         </script>
     </body>
