@@ -42,7 +42,7 @@
         }
         .row-regular {}
         .cell {
-            background: rgba(255, 255, 255, 0.86);
+            background: rgba(255, 255, 255, 0.75);
             position: relative;
             width: 180px;
             height: 180px;
@@ -55,11 +55,11 @@
         }
         .row > :nth-child(1),
         .row > :nth-child(7) {
-            opacity: 0.5;
+            opacity: 0.4;
         }
         .cell[data-today="true"],
         .cell:not(:nth-child(1)):not(:nth-child(7)):hover {
-            background: rgba(255, 255, 255, 0.91);
+            background: rgba(255, 255, 255, 1);
             box-shadow: rgba(0, 0, 0, 0.35) 0 3px 40px 1px;
         }
         .cell[data-today="true"] {
@@ -67,7 +67,7 @@
         }
         .cell:not(:nth-child(1)):not(:nth-child(7)):hover {
             z-index: 500;
-            transition: all ease 10ms;
+            transition: all ease 100ms;
         }
         .cell[data-today="true"]:not(:nth-child(1)):not(:nth-child(7)):hover {
             box-shadow: rgba(0, 0, 0, 0.62) 0 3px 55px 1px;
@@ -153,6 +153,27 @@
         }
         .bold {
             font-weight: 600;
+        }
+        /*-----------------------------------------*/
+        /* For Print */
+        @media print {
+            .azure, .emerald, .ruby {
+                color: #000;
+            }
+            .cell {
+                border: 1px solid #999;
+                box-shadow: none !important;
+            }
+            .cell-date {
+                display: none;
+            }
+            html, body {
+                padding: 0;
+                margin-left: 0;
+            }
+            body {
+                zoom: 0.7;
+            }
         }
         </style>
     </head>
