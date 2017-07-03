@@ -269,7 +269,7 @@
 
         // Mark Today
         (function () {
-            var theOriginalSunday = new Date('Sun Jun 25 2017 00:00:00 GMT+0800').getTime() - MillisecondsPerDay*7*(0%3);
+            window.theOriginalSunday = new Date('Sun Jun 25 2017 00:00:00 GMT+0800').getTime() - MillisecondsPerDay*7*(0%3);
             var today = Date.now();
             window.delta = Math.floor((today-theOriginalSunday)%(MillisecondsPerDay*21)/(MillisecondsPerDay));
             document.querySelectorAll('.cell')[delta].setAttribute('data-today', 'true');
@@ -294,6 +294,16 @@
                 footer.appendChild(document.createTextNode(dateString));
                 document.querySelectorAll('.cell')[i].appendChild(footer);
             });
+        })();
+
+        // Auto Reload
+        (function () {
+            window.setInterval(function () {
+                var currentDelta = Math.floor((Date.now()-theOriginalSunday)%(MillisecondsPerDay*21)/(MillisecondsPerDay));
+                if (currentDelta != delta) {
+                    window.reload();
+                }
+            }, 30*1000);
         })();
         </script>
     </body>
