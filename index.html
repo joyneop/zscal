@@ -269,7 +269,7 @@
 
         // Mark Today
         (function () {
-            window.theOriginalSunday = new Date('Sun Jun 25 2017 00:00:00 GMT+0800').getTime() - MillisecondsPerDay*7*(0%3);
+            window.theOriginalSunday = new Date('Sun Jun 25 2017 00:00:00 GMT+0800').getTime() - MillisecondsPerDay*7*(2%3);
             var today = Date.now();
             window.delta = Math.floor((today-theOriginalSunday)%(MillisecondsPerDay*21)/(MillisecondsPerDay));
             document.querySelectorAll('.cell')[delta].setAttribute('data-today', 'true');
